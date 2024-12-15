@@ -1,5 +1,5 @@
 <script>
-    var pathname = window.location.pathname;
-    var newPath = "/profile-website" + pathname;
-    window.location.replace(newPath);
-</script>
+    // Redirect to the root of the GitHub Pages app
+    var redirectTo = window.location.pathname.replace(/^\/<your-repo-name>/, '');
+    window.location.replace('/profile-website' + redirectTo);
+  </script>
