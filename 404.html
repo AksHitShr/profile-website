@@ -1,5 +1,29 @@
-<script>
-    // Redirect to the root of the GitHub Pages app
-    var redirectTo = window.location.pathname.replace(/^\/<your-repo-name>/, '');
-    window.location.replace('/profile-website' + redirectTo);
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found</title>
+</head>
+<body>
+  <h1>Page Not Found</h1>
+  <p>Redirecting to the correct page...</p>
+  <script>
+    // Redirect logic for GitHub Pages
+    (function() {
+      const pathname = window.location.pathname;
+      const redirectBase = '/profile-website'; // Base path of your GitHub Pages site
+
+      // Check if the path starts with the base
+      if (pathname.startsWith(redirectBase)) {
+        // Rewrite the path to index.html while keeping the path info
+        const redirectUrl = `${redirectBase}/index.html${pathname.replace(redirectBase, '')}${window.location.search}`;
+        window.location.replace(redirectUrl);
+      } else {
+        // Redirect to the home page as fallback
+        window.location.replace(`${redirectBase}/index.html`);
+      }
+    })();
   </script>
+</body>
+</html>
