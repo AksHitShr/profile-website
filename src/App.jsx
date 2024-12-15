@@ -29,7 +29,7 @@ function App() {
   }, []);
 
   return (
-    <Router>
+    <Router basename="/profile-website">
       <Preloader load={load} />
       <div className="App" id={load ? "no-scroll" : "scroll"}>
         <Navbar />
