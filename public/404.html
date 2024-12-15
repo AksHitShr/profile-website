@@ -9,19 +9,14 @@
   <h1>Page Not Found</h1>
   <p>Redirecting to the correct page...</p>
   <script>
-    // Redirect logic for GitHub Pages
     (function() {
+      const repoName = '/profile-website'; // Replace with your repo name
       const pathname = window.location.pathname;
-      const redirectBase = '/profile-website'; // Base path of your GitHub Pages site
 
-      // Check if the path starts with the base
-      if (pathname.startsWith(redirectBase)) {
-        // Rewrite the path to index.html while keeping the path info
-        const redirectUrl = `${redirectBase}/index.html${pathname.replace(redirectBase, '')}${window.location.search}`;
-        window.location.replace(redirectUrl);
-      } else {
-        // Redirect to the home page as fallback
-        window.location.replace(`${redirectBase}/index.html`);
+      // Avoid infinite redirect if already on index.html
+      if (!pathname.endsWith('/index.html')) {
+        const newPath = pathname.replace(new RegExp(`^${repoName}`), '');
+        window.location.replace(`${repoName}/index.html#${newPath}${window.location.search}`);
       }
     })();
   </script>
